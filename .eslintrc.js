@@ -14,6 +14,7 @@ module.exports = {
     'object-curly-newline': 0,
     'no-underscore-dangle': 0,
     'consistent-return': 0,
-    'global-require': 0
+    'global-require': 0,
+    'no-shadow': 0
   }
 };
