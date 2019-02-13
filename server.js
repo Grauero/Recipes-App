@@ -2,6 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 // GraphQL-Express middlewares
 const { graphiqlExpress, graphqlExpress } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
@@ -12,6 +13,12 @@ const User = require('./models/User');
 const { typeDefs } = require('./schema');
 const { resolvers } = require('./resolvers');
 
+const app = express();
+const PORT = process.env.PORT || 4444;
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true
+};
 // GraphQL schema
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
@@ -21,10 +28,8 @@ mongoose
   .then(() => console.log('Connected to DB'))
   .catch(err => console.error(err));
 
-const app = express();
-const PORT = process.env.PORT || 4444;
-
 // Server config
+app.use(cors(corsOptions));
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 app.use(
   '/graphql',
