@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router, Route, Switch, Redirect
@@ -10,6 +11,7 @@ import * as serviceWorker from './serviceWorker';
 import App from './components/App';
 import Signin from './components/auth/Signin';
 import Signup from './components/auth/Signup';
+import withSession from './components/withSession/withSession';
 import './index.css';
 
 const client = new ApolloClient({
@@ -33,20 +35,34 @@ const client = new ApolloClient({
   }
 });
 
-const Root = () => (
+const Root = ({ refetch }) => (
   <Router>
     <Switch>
       <Route exact path="/" component={App} />
-      <Route path="/signin" component={Signin} />
-      <Route path="/signup" component={Signup} />
+      <Route
+        path="/signin"
+        render={() => {
+          <Signin refetch={refetch} />;
+        }}
+      />
+      <Route
+        path="/signup"
+        render={() => {
+          <Signup refetch={refetch} />;
+        }}
+      />
       <Redirect to="/" />
     </Switch>
   </Router>
 );
 
+Root.propTypes = { refetch: PropTypes.func.isRequired };
+
+const RootWithSession = withSession(Root);
+
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <Root />
+    <RootWithSession />
   </ApolloProvider>,
   document.getElementById('root')
 );

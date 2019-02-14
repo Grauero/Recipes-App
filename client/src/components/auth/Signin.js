@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
+import { withRouter } from 'react-router-dom';
 
 import Error from '../error/Error';
 import { SIGNIN_USER } from '../../queries';
@@ -21,8 +23,10 @@ class Signin extends Component {
 
     const { data } = await signinUser();
     localStorage.setItem('token', data.signinUser.token);
+    await this.props.refetch();
 
     this.clearState();
+    this.props.history.push('/');
   };
 
   validateForm = () => {
@@ -74,4 +78,11 @@ class Signin extends Component {
   }
 }
 
-export default Signin;
+Signin.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired,
+  refetch: PropTypes.func.isRequired
+};
+
+export default withRouter(Signin);

@@ -11,6 +11,16 @@ exports.resolvers = {
   Query: {
     async getAllRecipes(root, args, { Recipe }) {
       return Recipe.find();
+    },
+    async getCurrentUser(root, args, { currentUser, User }) {
+      if (!currentUser) return null;
+
+      const user = await User.findOne({ username: currentUser.username }).populate({
+        path: 'favorites',
+        model: 'Recipe'
+      });
+
+      return user;
     }
   },
   Mutation: {
