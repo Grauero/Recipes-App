@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import {
@@ -11,6 +11,10 @@ import * as serviceWorker from './serviceWorker';
 import App from './components/App';
 import Signin from './components/auth/Signin';
 import Signup from './components/auth/Signup';
+import Navbar from './components/layouts/Navbar';
+import Search from './components/recipe/Search';
+import AddRecipe from './components/recipe/AddRecipe';
+import Profile from './components/profile/Profile';
 import withSession from './components/withSession/withSession';
 import './index.css';
 
@@ -35,28 +39,37 @@ const client = new ApolloClient({
   }
 });
 
-const Root = ({ refetch }) => (
+const Root = ({ refetch, session }) => (
   <Router>
-    <Switch>
-      <Route exact path="/" component={App} />
-      <Route
-        path="/signin"
-        render={() => {
-          <Signin refetch={refetch} />;
-        }}
-      />
-      <Route
-        path="/signup"
-        render={() => {
-          <Signup refetch={refetch} />;
-        }}
-      />
-      <Redirect to="/" />
-    </Switch>
+    <Fragment>
+      <Navbar session={session} />
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route path="/search" component={Search} />
+        <Route
+          path="/signin"
+          render={() => {
+            <Signin refetch={refetch} />;
+          }}
+        />
+        <Route
+          path="/signup"
+          render={() => {
+            <Signup refetch={refetch} />;
+          }}
+        />
+        <Route path="/recipe/add" component={AddRecipe} />
+        <Route path="/profile" component={Profile} />
+        <Redirect to="/" />
+      </Switch>
+    </Fragment>
   </Router>
 );
 
-Root.propTypes = { refetch: PropTypes.func.isRequired };
+Root.propTypes = {
+  refetch: PropTypes.func.isRequired,
+  session: PropTypes.instanceOf(Object).isRequired
+};
 
 const RootWithSession = withSession(Root);
 
