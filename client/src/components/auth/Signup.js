@@ -14,20 +14,16 @@ const initialState = {
 class Signup extends Component {
   state = { ...initialState };
 
-  clearState = () => {
-    this.setState({ ...initialState });
-  };
+  clearState = () => this.setState({ ...initialState });
 
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
+  handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
   handleSubmit = async (e, signupUser) => {
     e.preventDefault();
 
-    const token = await signupUser();
+    const { data } = await signupUser();
+    localStorage.setItem('token', data.signupUser.token);
+
     this.clearState();
   };
 
@@ -53,50 +49,51 @@ class Signup extends Component {
       <div className="App">
         <h2 className="App">Signup</h2>
         <Mutation mutation={SIGNUP_USER} variables={{ username, email, password }}>
-          {(signupUser, { data, loading, error }) => {
-            if (true) console.log(1);
+          {(signupUser, { loading, error }) => (
+            <form className="form" onSubmit={e => this.handleSubmit(e, signupUser)}>
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={username}
+                onChange={this.handleChange}
+              />
 
-            return (
-              <form className="form" onSubmit={e => this.handleSubmit(e, signupUser)}>
-                <input
-                  type="text"
-                  name="username"
-                  placeholder="Username"
-                  value={username}
-                  onChange={this.handleChange}
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email Address"
-                  value={email}
-                  onChange={this.handleChange}
-                />
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={this.handleChange}
-                />
-                <input
-                  type="password"
-                  name="passwordConfirmation"
-                  placeholder="Confirm Password"
-                  value={passwordConfirmation}
-                  onChange={this.handleChange}
-                />
-                <button
-                  type="submit"
-                  disabled={loading || this.validateForm()}
-                  className="button-primary"
-                >
-                  Submit
-                </button>
-                {error && <Error error={error} />}
-              </form>
-            );
-          }}
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                value={email}
+                onChange={this.handleChange}
+              />
+
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={password}
+                onChange={this.handleChange}
+              />
+
+              <input
+                type="password"
+                name="passwordConfirmation"
+                placeholder="Confirm Password"
+                value={passwordConfirmation}
+                onChange={this.handleChange}
+              />
+
+              <button
+                type="submit"
+                disabled={loading || this.validateForm()}
+                className="button-primary"
+              >
+                Submit
+              </button>
+
+              {error && <Error error={error} />}
+            </form>
+          )}
         </Mutation>
       </div>
     );

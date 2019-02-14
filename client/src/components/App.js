@@ -8,7 +8,7 @@ const App = () => (
   <div className="App">
     <h1>Home</h1>
     <Query query={GET_ALL_RECIPES}>
-      {({ data, loading, error }) => {
+      {({ loading, error }) => {
         if (loading) return <div>loading</div>;
         if (error) return <div>error</div>;
 
