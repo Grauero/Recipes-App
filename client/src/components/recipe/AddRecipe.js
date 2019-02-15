@@ -4,7 +4,7 @@ import { Mutation } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 
 import Error from '../error/Error';
-import { ADD_RECIPE } from '../../queries';
+import { ADD_RECIPE, GET_ALL_RECIPES } from '../../queries';
 
 const initialState = {
   name: '',
@@ -45,6 +45,17 @@ class AddRecipe extends Component {
     return isInvalid;
   };
 
+  updateCache = (cache, { data: { addRecipe } }) => {
+    const { getAllRecipes } = cache.readQuery({ query: GET_ALL_RECIPES });
+
+    cache.writeQuery({
+      query: GET_ALL_RECIPES,
+      data: {
+        getAllRecipes: [addRecipe, ...getAllRecipes]
+      }
+    });
+  };
+
   render() {
     const {
       name, instructions, category, description, username
@@ -60,6 +71,7 @@ class AddRecipe extends Component {
           description,
           username
         }}
+        update={this.updateCache}
       >
         {(addRecipe, { loading, error }) => (
           <div className="App">
@@ -100,7 +112,7 @@ class AddRecipe extends Component {
                 type="submit"
                 className="button-primary"
               >
-                  Submit
+                Submit
               </button>
               {error && <Error error={error} />}
             </form>
