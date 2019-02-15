@@ -10,7 +10,10 @@ function createToken({ username, email }, secret, expiresIn) {
 exports.resolvers = {
   Query: {
     async getAllRecipes(root, args, { Recipe }) {
-      return Recipe.find();
+      return Recipe.find().sort({ createdDate: 'desc' });
+    },
+    async getRecipe(root, { _id }, { Recipe }) {
+      return Recipe.findOne({ _id });
     },
     async getCurrentUser(root, args, { currentUser, User }) {
       if (!currentUser) return null;
