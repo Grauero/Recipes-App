@@ -51,16 +51,15 @@ export const ADD_RECIPE = gql`
       category: $category
       instructions: $instructions
       username: $username
-      ) {
-        _id
-        name  
-        category
-        description
-        instructions 
-        createdDate
-        likes
-      }
-    )
+    ) {
+      _id
+      name
+      category
+      description
+      instructions
+      createdDate
+      likes
+    }
   }
 `;
 
@@ -77,7 +76,7 @@ export const GET_CURRENT_USER = gql`
 
 // User Mutations
 export const SIGNIN_USER = gql`
-  mutation($username: String!, $passwrod: String!) {
+  mutation($username: String!, $password: String!) {
     signinUser(username: $username, password: $password) {
       token
     }

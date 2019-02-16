@@ -11,7 +11,7 @@ const Navbar = ({ session }) => (
 );
 
 Navbar.propTypes = {
-  session: PropTypes.instanseOf(Object).isRequired
+  session: PropTypes.instanceOf(Object).isRequired
 };
 
 export default Navbar;

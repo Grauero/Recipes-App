@@ -34,7 +34,7 @@ class Search extends Component {
             />
 
             <ul>
-              {searchResults.searchRecipes.map(recipe => (
+              {searchResults.map(recipe => (
                 <SearchItem key={recipe._id} {...recipe} />
               ))}
             </ul>
