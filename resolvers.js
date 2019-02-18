@@ -34,6 +34,9 @@ exports.resolvers = {
         createdDate: 'desc'
       });
     },
+    async getUserRecipes(root, { username }, { Recipe }) {
+      return Recipe.find({ username }).sort({ createdDate: 'desc' });
+    },
     async getCurrentUser(root, args, { currentUser, User }) {
       if (!currentUser) return null;
 
