@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import UserInfo from './UserInfo';
 import UserRecipes from './UserRecipes';
+import withAuth, { isAuth } from '../utils/withAuth';
 
 const Profile = ({ session }) => (
   <div className="App">
@@ -19,4 +20,4 @@ Profile.propTypes = {
   }).isRequired
 };
 
-export default Profile;
+export default withAuth(isAuth)(Profile);

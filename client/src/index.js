@@ -16,7 +16,7 @@ import Search from './components/recipe/Search';
 import AddRecipe from './components/recipe/AddRecipe';
 import RecipePage from './components/recipe/RecipePage';
 import Profile from './components/profile/Profile';
-import withSession from './components/withSession/withSession';
+import withSession from './components/utils/withSession';
 import './index.css';
 
 const client = new ApolloClient({

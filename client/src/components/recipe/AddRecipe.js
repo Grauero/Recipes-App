@@ -4,6 +4,7 @@ import { Mutation } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 
 import Error from '../error/Error';
+import withAuth, { isAuth } from '../utils/withAuth';
 import { ADD_RECIPE, GET_ALL_RECIPES } from '../../queries';
 
 const initialState = {
@@ -134,4 +135,4 @@ AddRecipe.propTypes = {
   }).isRequired
 };
 
-export default withRouter(AddRecipe);
+export default withAuth(isAuth)(withRouter(AddRecipe));
