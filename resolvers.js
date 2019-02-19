@@ -58,6 +58,9 @@ exports.resolvers = {
         username
       }).save();
     },
+    async deleteUserRecipe(root, { _id }, { Recipe }) {
+      return Recipe.findOneAndRemove({ _id });
+    },
     async signinUser(root, { username, password }, { User }) {
       const user = await User.findOne({ username });
       if (!user) throw new Error('User not found');
