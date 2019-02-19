@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Query } from 'react-apollo';
 
+import LikeRecipe from './LikeRecipe';
 import { GET_RECIPE } from '../../queries';
 
 const RecipePage = ({ match }) => {
@@ -26,7 +27,7 @@ const RecipePage = ({ match }) => {
             <p>Instructions: {instructions}</p>
             <p>Likes: {likes}</p>
             <p>Created By: {username}</p>
-            <button type="button">Like</button>
+            <LikeRecipe _id={_id} />
           </div>
         );
       }}
