@@ -67,6 +67,12 @@ exports.resolvers = {
 
       return recipe;
     },
+    async unlikeRecipe(root, { _id, username }, { Recipe, User }) {
+      const recipe = await Recipe.findOneAndUpdate({ _id }, { $inc: { likes: -1 } });
+      await User.findOneAndUpdate({ username }, { $pull: { favorites: _id } });
+
+      return recipe;
+    },
     async signinUser(root, { username, password }, { User }) {
       const user = await User.findOne({ username });
       if (!user) throw new Error('User not found');
