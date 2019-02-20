@@ -78,7 +78,7 @@ class LikeRecipe extends Component {
           <Mutation mutation={LIKE_RECIPE} variables={{ _id, username }} update={this.updateLike}>
             {likeRecipe =>
               username && (
-                <button type="button" onCLick={() => this.handleClick(likeRecipe, unlikeRecipe)}>
+                <button type="button" onClick={() => this.handleClick(likeRecipe, unlikeRecipe)}>
                   {liked ? 'Unlike' : 'Like'}
                 </button>
               )
@@ -94,7 +94,7 @@ LikeRecipe.propTypes = {
   session: PropTypes.shape({
     getCurrentUser: PropTypes.shape({
       username: PropTypes.string.isRequired,
-      favorites: PropTypes.arrayOf(PropTypes.string).isRequired
+      favorites: PropTypes.arrayOf(PropTypes.instanceOf(Object)).isRequired
     }).isRequired
   }).isRequired,
   _id: PropTypes.string.isRequired,
