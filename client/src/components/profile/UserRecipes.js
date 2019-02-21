@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Query, Mutation } from 'react-apollo';
 import { Link } from 'react-router-dom';
 
+import Spinner from '../common/Spinner';
+import Error from '../common/Error';
 import {
   GET_USER_RECIPES,
   DELETE_USER_RECIPE,
@@ -21,8 +23,8 @@ const handleDelete = async (deleteUserRecipe) => {
 const UserRecipes = ({ username }) => (
   <Query query={GET_USER_RECIPES} variables={{ username }}>
     {(data, loading, error) => {
-      if (loading) return <div>Loading</div>;
-      if (error) return <div>Error</div>;
+      if (loading) return <Spinner />;
+      if (error) return <Error error={error} />;
 
       return (
         <ul>

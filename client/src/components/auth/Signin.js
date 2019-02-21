@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 
-import Error from '../error/Error';
+import Error from '../common/Error';
 import { SIGNIN_USER } from '../../queries';
 
 const initialState = {

@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Error = ({ error }) => <p>{error.message}</p>;
+const Error = ({ error }) => (
+  <div className="App">
+    <h1>An Error Occurred. Try to restart site.</h1>
+    <p>{error.message}</p>
+  </div>
+);
 
 Error.propTypes = {
   error: PropTypes.shape({

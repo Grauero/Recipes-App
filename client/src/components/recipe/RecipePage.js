@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { Query } from 'react-apollo';
 
 import LikeRecipe from './LikeRecipe';
+import Spinner from '../common/Spinner';
+import Error from '../common/Error';
 import { GET_RECIPE } from '../../queries';
 
 const RecipePage = ({ match }) => {
@@ -12,17 +14,11 @@ const RecipePage = ({ match }) => {
   return (
     <Query query={GET_RECIPE} variables={{ _id }}>
       {({ data, loading, error }) => {
-        if (loading) return <div>Loading</div>;
-        if (error) return <div>Error</div>;
+        if (loading) return <Spinner />;
+        if (error) return <Error error={error} />;
 
         const {
-          name,
-          imageUrl,
-          category,
-          description,
-          instructions,
-          likes,
-          username
+          name, imageUrl, category, description, likes, username
         } = data.getRecipe;
 
         return (
