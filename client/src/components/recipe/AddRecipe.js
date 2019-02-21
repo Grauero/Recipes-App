@@ -9,6 +9,7 @@ import { ADD_RECIPE, GET_ALL_RECIPES, GET_USER_RECIPES } from '../../queries';
 
 const initialState = {
   name: '',
+  imageUrl: '',
   instructions: '',
   category: 'Breakfast',
   description: '',
@@ -39,9 +40,9 @@ class AddRecipe extends Component {
 
   validateForm = () => {
     const {
-      name, instructions, category, description
+      name, imageUrl, instructions, category, description
     } = this.state;
-    const isInvalid = !name || !instructions || !category || !description;
+    const isInvalid = !name || !imageUrl || !instructions || !category || !description;
 
     return isInvalid;
   };
@@ -59,7 +60,7 @@ class AddRecipe extends Component {
 
   render() {
     const {
-      name, instructions, category, description, username
+      name, imageUrl, instructions, category, description, username
     } = this.state;
 
     return (
@@ -67,6 +68,7 @@ class AddRecipe extends Component {
         mutation={ADD_RECIPE}
         variables={{
           name,
+          imageUrl,
           instructions,
           category,
           description,
@@ -84,6 +86,14 @@ class AddRecipe extends Component {
                 name="name"
                 placeholder="Recipe Name"
                 value={name}
+                onChange={this.handleChange}
+              />
+
+              <input
+                type="text"
+                name="imageUrl"
+                placeholder="Recipe Image"
+                value={imageUrl}
                 onChange={this.handleChange}
               />
 
