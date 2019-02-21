@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
+import CKEditor from 'react-ckeditor-component';
 
 import Error from '../error/Error';
 import withAuth, { isAuth } from '../utils/withAuth';
@@ -28,6 +29,11 @@ class AddRecipe extends Component {
   clearState = () => this.setState({ ...initialState });
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
+
+  handleEditorChange = (e) => {
+    const newContent = e.editor.getData();
+    this.setState({ instructions: newContent });
+  };
 
   handleSubmit = async (e, addRecipe) => {
     e.preventDefault();
@@ -112,12 +118,18 @@ class AddRecipe extends Component {
                 onChange={this.handleChange}
               />
 
-              <textarea
+              <label htmlFor="instructions">Add Instructions</label>
+              <CKEditor
+                name="instructions"
+                content={instructions}
+                events={{ change: this.handleEditorChange }}
+              />
+              {/* <textarea
                 name="instructions"
                 placeholder="Add instructions"
                 value={instructions}
                 onChange={this.handleChange}
-              />
+              /> */}
 
               <button
                 disabled={loading || this.validateForm()}
