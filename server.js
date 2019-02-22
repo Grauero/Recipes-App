@@ -1,11 +1,12 @@
 /* eslint-disable no-console */
+const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 // GraphQL-Express middlewares
-const { graphiqlExpress, graphqlExpress } = require('apollo-server-express');
+const { graphqlExpress } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
 
 const keys = require('./config/keys');
@@ -45,7 +46,6 @@ app.use(async (req, res, next) => {
 
   next();
 });
-app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 app.use(
   '/graphql',
   bodyParser.json(),
@@ -58,5 +58,13 @@ app.use(
     }
   }))
 );
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 app.listen(PORT, () => console.log(`Server on port ${PORT}`));

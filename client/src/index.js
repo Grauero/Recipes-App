@@ -22,7 +22,7 @@ const RecipePage = lazy(() => import('./components/recipe/RecipePage'));
 const Profile = lazy(() => import('./components/profile/Profile'));
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4444/graphql',
+  uri: process.env.REACT_APP_GRAPHQL_SERVER,
   fetchOptions: {
     credentials: true
   },
