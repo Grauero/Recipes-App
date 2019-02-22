@@ -4,7 +4,7 @@ import { Mutation } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import CKEditor from 'react-ckeditor-component';
 
-import Error from '../error/Error';
+import Error from '../common/Error';
 import withAuth, { isAuth } from '../utils/withAuth';
 import { ADD_RECIPE, GET_ALL_RECIPES, GET_USER_RECIPES } from '../../queries';
 
@@ -124,17 +124,12 @@ class AddRecipe extends Component {
                 content={instructions}
                 events={{ change: this.handleEditorChange }}
               />
-              {/* <textarea
-                name="instructions"
-                placeholder="Add instructions"
-                value={instructions}
-                onChange={this.handleChange}
-              /> */}
 
               <button
                 disabled={loading || this.validateForm()}
                 type="submit"
                 className="button-primary"
+                style={{ marginTop: '1em' }}
               >
                 Submit
               </button>

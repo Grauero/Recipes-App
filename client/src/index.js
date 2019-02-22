@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import {
@@ -9,15 +9,17 @@ import { ApolloProvider } from 'react-apollo';
 import * as serviceWorker from './serviceWorker';
 
 import App from './components/App';
-import Signin from './components/auth/Signin';
-import Signup from './components/auth/Signup';
 import Navbar from './components/layouts/Navbar';
-import Search from './components/recipe/Search';
-import AddRecipe from './components/recipe/AddRecipe';
-import RecipePage from './components/recipe/RecipePage';
-import Profile from './components/profile/Profile';
+import Spinner from './components/common/Spinner';
 import withSession from './components/utils/withSession';
 import './index.css';
+
+const Search = lazy(() => import('./components/recipe/Search'));
+const Signin = lazy(() => import('./components/auth/Signin'));
+const Signup = lazy(() => import('./components/auth/Signup'));
+const AddRecipe = lazy(() => import('./components/recipe/AddRecipe'));
+const RecipePage = lazy(() => import('./components/recipe/RecipePage'));
+const Profile = lazy(() => import('./components/profile/Profile'));
 
 const client = new ApolloClient({
   uri: 'http://localhost:4444/graphql',
@@ -67,7 +69,9 @@ const RootWithSession = withSession(Root);
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <RootWithSession />
+    <Suspense fallback={<div className="fallback"><Spinner /></div>}>
+      <RootWithSession />
+    </Suspense>
   </ApolloProvider>,
   document.getElementById('root')
 );

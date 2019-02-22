@@ -99,7 +99,7 @@ LikeRecipe.propTypes = {
     getCurrentUser: PropTypes.shape({
       username: PropTypes.string.isRequired,
       favorites: PropTypes.arrayOf(PropTypes.instanceOf(Object)).isRequired
-    }).isRequired
+    })
   }).isRequired,
   _id: PropTypes.string.isRequired,
   refetch: PropTypes.func.isRequired

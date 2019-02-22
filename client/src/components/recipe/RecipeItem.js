@@ -16,7 +16,7 @@ const RecipeItem = ({
     style={{ background: `url(${imageUrl}) no-repeat center center / cover` }}
   >
     <span className={category}>{category}</span>
-    <div className="card-">
+    <div className="card-text">
       <Link to={`/recipes/${_id}`}>
         <h4>{name}</h4>
       </Link>
