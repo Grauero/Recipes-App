@@ -13,9 +13,21 @@
     "dev": "concurrently --names \"server,client\" \"npm run server --silent\" \"npm run client --silent\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "React",
+    "Node",
+    "Express",
+    "MongoDB",
+    "Apollo Client",
+    "Apollo Server",
+    "GraphQL"
+  ],
+  "author": "Grauero",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Grauero/Recipes-App.git"
+  },
   "dependencies": {
     "apollo-server-express": "^1.4.0",
     "bcrypt": "^3.0.4",
