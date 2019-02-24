@@ -25,6 +25,13 @@ const Mutation = {
   async deleteUserRecipe(root, { _id }, { Recipe }) {
     return Recipe.findOneAndRemove({ _id });
   },
+  async updateUserRecipe(root, { _id, name, imageUrl, category, description }, { Recipe }) {
+    return Recipe.findOneAndUpdate(
+      { _id },
+      { $set: { name, imageUrl, category, description } },
+      { new: true }
+    );
+  },
   async likeRecipe(root, { _id, username }, { Recipe, User }) {
     const recipe = await Recipe.findOneAndUpdate({ _id }, { $inc: { likes: 1 } });
     await User.findOneAndUpdate({ username }, { $addToSet: { favorites: _id } });

@@ -15,6 +15,7 @@ import {
 
 class UserRecipes extends Component {
   state = {
+    _id: '',
     name: '',
     imageUrl: '',
     category: '',
@@ -23,6 +24,13 @@ class UserRecipes extends Component {
   };
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
+
+  handleSubmit = async (e, updateUserRecipe) => {
+    e.preventDefault();
+
+    await updateUserRecipe();
+    this.closeModal();
+  };
 
   handleDelete = async (deleteUserRecipe) => {
     const deleteConfirmation = window.confirm('Are you sure you want to delete this recipe?');
@@ -48,6 +56,8 @@ class UserRecipes extends Component {
     });
   };
 
+  loadRecipe = recipe => this.setState({ ...recipe, modal: true });
+
   closeModal = () => this.setState({ modal: false });
 
   render() {
@@ -63,7 +73,12 @@ class UserRecipes extends Component {
           return (
             <ul>
               {modal && (
-                <EditRecipeModal closeModal={this.closeModal} handleChange={this.handleChange} />
+                <EditRecipeModal
+                  recipe={this.state}
+                  closeModal={this.closeModal}
+                  handleChange={this.handleChange}
+                  handleSubmit={this.handleSubmit}
+                />
               )}
               {data.data && data.data.getUserRecipes && data.data.getUserRecipes.length !== 0 && (
                 <h3>Your Recipes</h3>
@@ -90,7 +105,7 @@ class UserRecipes extends Component {
                           <button
                             type="button"
                             className="button-primary"
-                            onClick={() => this.setState({ modal: true })}
+                            onClick={() => this.loadRecipe(recipe)}
                           >
                             Update
                           </button>
