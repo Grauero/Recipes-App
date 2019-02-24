@@ -87,6 +87,7 @@ class AddRecipe extends Component {
           <div className="App">
             <h2 className="App">Add Recipe</h2>
             <form className="form" onSubmit={e => this.handleSubmit(e, addRecipe)}>
+              <label htmlFor="name">Recipe Name</label>
               <input
                 type="text"
                 name="name"
@@ -95,6 +96,7 @@ class AddRecipe extends Component {
                 onChange={this.handleChange}
               />
 
+              <label htmlFor="imageUrl">Recipe Image</label>
               <input
                 type="text"
                 name="imageUrl"
@@ -103,6 +105,7 @@ class AddRecipe extends Component {
                 onChange={this.handleChange}
               />
 
+              <label htmlFor="category">Category of Recipe</label>
               <select name="category" value={category} onChange={this.handleChange}>
                 <option value="Breakfast">Breakfast</option>
                 <option value="Lunch">Lunch</option>
@@ -110,6 +113,7 @@ class AddRecipe extends Component {
                 <option value="Snack">Snack</option>
               </select>
 
+              <label htmlFor="description">Recipe Description</label>
               <input
                 type="text"
                 name="description"
