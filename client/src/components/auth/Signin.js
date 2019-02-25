@@ -86,3 +86,4 @@ Signin.propTypes = {
 };
 
 export default withRouter(Signin);
+export { Signin };

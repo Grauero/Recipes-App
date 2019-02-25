@@ -35,7 +35,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest --watch --no-cache",
+    "test-clear-cache": "jest --clearCache",
+    "test-coverage": "jest --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -48,10 +50,43 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.3.3",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.3.1",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.9.1",
+    "enzyme-to-json": "^3.3.5",
     "eslint": "^5.13.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.12.4"
+    "eslint-plugin-react": "^7.12.4",
+    "jest": "^21.0.0",
+    "jest-transform-graphql": "^2.1.0",
+    "regenerator-runtime": "^0.13.1",
+    "waait": "^1.0.4"
+  },
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "jsdom",
+    "testMatch": [
+      "<rootDir>/__tests__/**/*.{js,jsx,mjs}"
+    ],
+    "setupFiles": [
+      "<rootDir>/mocks/browserMocks.js"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js",
+    "transform": {
+      "^.+\\.(js|jsx|mjs)$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+    ]
   }
 }

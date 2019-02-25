@@ -112,3 +112,4 @@ Signup.propTypes = {
 };
 
 export default withRouter(Signup);
+export { Signup };

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders component 1`] = `
+<Signout
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+>
+  <ApolloConsumer>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Signout
+    </button>
+  </ApolloConsumer>
+</Signout>
+`;

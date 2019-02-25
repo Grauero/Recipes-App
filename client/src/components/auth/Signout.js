@@ -26,3 +26,4 @@ Signout.propTypes = {
 };
 
 export default withRouter(Signout);
+export { Signout };
