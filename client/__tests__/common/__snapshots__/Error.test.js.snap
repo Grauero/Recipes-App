@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot when error message is NOT provided 1`] = `
+<div
+  className="App"
+>
+  <h1>
+    An Error Occurred. Try to restart site.
+  </h1>
+</div>
+`;
+
+exports[`matches snapshot when error message is provided 1`] = `
+<div
+  className="App"
+>
+  <h1>
+    An Error Occurred. Try to restart site.
+  </h1>
+  <p>
+    error-message
+  </p>
+</div>
+`;

@@ -26,7 +26,7 @@ afterEach(() => {
   wrapper.unmount();
 });
 
-it('renders component', () => {
+it('matches snapshot', () => {
   expect(toJSON(component)).toMatchSnapshot();
 });
 
