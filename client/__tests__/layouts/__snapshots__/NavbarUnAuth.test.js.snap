@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<ul>
+  <li>
+    <NavLink
+      activeClassName="active"
+      aria-current="page"
+      exact={true}
+      to="/"
+    >
+      Home
+    </NavLink>
+  </li>
+  <li>
+    <NavLink
+      activeClassName="active"
+      aria-current="page"
+      to="/search"
+    >
+      Search
+    </NavLink>
+  </li>
+  <li>
+    <NavLink
+      activeClassName="active"
+      aria-current="page"
+      to="/signin"
+    >
+      Signin
+    </NavLink>
+  </li>
+  <li>
+    <NavLink
+      activeClassName="active"
+      aria-current="page"
+      to="/signup"
+    >
+      Signup
+    </NavLink>
+  </li>
+</ul>
+`;

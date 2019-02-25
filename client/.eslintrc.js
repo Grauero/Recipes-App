@@ -48,6 +48,7 @@ module.exports = {
     'jsx-a11y/accessible-emoji': 0,
     'no-restricted-globals': 0,
     'react/no-unescaped-entities': 0,
-    'jsx-a11y/no-noninteractive-element-interactions': 0
+    'jsx-a11y/no-noninteractive-element-interactions': 0,
+    'import/no-named-as-default': 0
   }
 };

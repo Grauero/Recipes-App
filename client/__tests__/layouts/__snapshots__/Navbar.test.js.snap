@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders <NavbarAuth /> component when session.getCurrentUser is provided 1`] = `
+<nav>
+  <NavbarAuth
+    session={
+      Object {
+        "getCurrentUser": Object {
+          "username": "username",
+        },
+      }
+    }
+  />
+</nav>
+`;
+
+exports[`renders <NavbarUnAuth /> component when session.getCurrentUser is NOT provided 1`] = `
+<nav>
+  <NavbarUnAuth />
+</nav>
+`;
