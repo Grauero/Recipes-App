@@ -35,9 +35,7 @@ const UserInfo = ({ session }) => (
 
 UserInfo.propTypes = {
   session: PropTypes.shape({
-    getCurrentUser: PropTypes.shape({
-      username: PropTypes.string.isRequired
-    }).isRequired
+    getCurrentUser: PropTypes.instanceOf(Object).isRequired
   }).isRequired
 };
 

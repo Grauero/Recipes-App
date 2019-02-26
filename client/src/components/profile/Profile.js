@@ -21,3 +21,4 @@ Profile.propTypes = {
 };
 
 export default withAuth(isAuth)(Profile);
+export { Profile };

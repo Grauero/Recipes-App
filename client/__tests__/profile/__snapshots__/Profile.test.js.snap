@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="App"
+>
+  <UserInfo
+    session={
+      Object {
+        "getCurrentUser": Object {
+          "favorites": Array [],
+          "username": "username",
+        },
+      }
+    }
+  />
+  <UserRecipes
+    username="username"
+  />
+</div>
+`;

@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<UserInfo
+  session={
+    Object {
+      "getCurrentUser": Object {
+        "email": "email",
+        "favorites": Array [
+          Object {
+            "_id": "_id",
+            "name": "name",
+          },
+        ],
+        "joinDate": "Tue Feb 26 2019 17:30:35 GMT+0300 (Москва, стандартное время)",
+        "username": "username",
+      },
+    }
+  }
+>
+  <div>
+    <h3>
+      User Info
+    </h3>
+    <p>
+      Username: 
+      username
+    </p>
+    <p>
+      Email: 
+      email
+    </p>
+    <p>
+      Join Date: 
+      2/26/2019 at 5:30:35 PM
+    </p>
+    <ul>
+      <h3>
+        username
+        's Favorites
+      </h3>
+      <li
+        key="_id"
+      >
+        <Link
+          replace={false}
+          to="/recipes/_id"
+        >
+          <a
+            href="/recipes/_id"
+            onClick={[Function]}
+          >
+            <p>
+              name
+            </p>
+          </a>
+        </Link>
+      </li>
+    </ul>
+  </div>
+</UserInfo>
+`;
