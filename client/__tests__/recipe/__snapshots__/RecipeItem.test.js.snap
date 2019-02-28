@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<ForwardRef
+  className="card"
+  style={
+    Object {
+      "background": "url(imageUrl) no-repeat center center / cover",
+    }
+  }
+>
+  <span
+    className="category"
+  >
+    category
+  </span>
+  <div
+    className="card-text"
+  >
+    <Link
+      replace={false}
+      to="/recipes/_id"
+    >
+      <h4>
+        name
+      </h4>
+    </Link>
+  </div>
+</ForwardRef>
+`;

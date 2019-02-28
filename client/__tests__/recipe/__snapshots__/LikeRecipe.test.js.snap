@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Like button if user did NOT liked the recipe 1`] = `
+<button
+  className="like-button"
+  onClick={[Function]}
+  type="button"
+>
+  Like
+</button>
+`;
+
+exports[`renders Unlike button if user already liked the recipe 1`] = `
+<button
+  className="like-button"
+  onClick={[Function]}
+  type="button"
+>
+  Unlike
+</button>
+`;

@@ -31,8 +31,8 @@ class LikeRecipe extends Component {
   };
 
   handleLike = async (likeRecipe, unlikeRecipe) => {
-    // like
     if (this.state.liked) {
+      // like
       await likeRecipe();
       await this.props.refetch();
     } else {
@@ -106,3 +106,4 @@ LikeRecipe.propTypes = {
 };
 
 export default withSession(LikeRecipe);
+export { LikeRecipe };

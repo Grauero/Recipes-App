@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<Search>
+  <ApolloConsumer>
+    <div
+      className="App"
+    >
+      <input
+        className="search"
+        onChange={[Function]}
+        placeholder="Search for Recipes"
+        type="search"
+      />
+      <ul />
+    </div>
+  </ApolloConsumer>
+</Search>
+`;

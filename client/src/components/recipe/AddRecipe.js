@@ -158,3 +158,4 @@ AddRecipe.propTypes = {
 };
 
 export default withAuth(isAuth)(withRouter(AddRecipe));
+export { AddRecipe };

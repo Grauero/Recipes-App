@@ -74,3 +74,4 @@ RecipePage.propTypes = {
 };
 
 export default withRouter(RecipePage);
+export { RecipePage };
