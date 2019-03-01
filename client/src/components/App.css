@@ -306,10 +306,6 @@ nav a:link {
   margin-bottom: 0;
 }
 
-.modal-content-inner input {
-  width: 500px;
-}
-
 .modal-buttons {
   display: flex;
   flex-direction: row;
