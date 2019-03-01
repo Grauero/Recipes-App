@@ -3,6 +3,7 @@ import { mount } from 'enzyme';
 import { BrowserRouter } from 'react-router-dom';
 import toJSON from 'enzyme-to-json';
 import { MockedProvider } from 'react-apollo/test-utils';
+import wait from 'waait';
 
 import Search from '../../src/components/recipe/Search';
 import { SEARCH_RECIPES } from '../../src/queries';
@@ -17,7 +18,13 @@ const mocks = [
     },
     result: {
       data: {
-        searchRecipes: { result: 'result' }
+        searchRecipes: [
+          {
+            _id: '_id',
+            name: 'name',
+            likes: 0
+          }
+        ]
       }
     }
   }
@@ -44,4 +51,17 @@ afterEach(() => {
 
 it('matches snapshot', () => {
   expect(toJSON(component)).toMatchSnapshot();
+});
+
+it('handles input change and updates state value', async () => {
+  const expectedState = { searchResults: [{ _id: '_id', name: 'name', likes: 0 }] };
+  const event = { target: { value: 'searchTerm' }, persist: jest.fn() };
+
+  component.find('input').simulate('change', event);
+  await wait(0);
+
+  expect(event.persist).toHaveBeenCalled();
+  expect(event.persist).toHaveBeenCalledTimes(1);
+  expect(component.state()).not.toEqual(initialState);
+  expect(component.state()).toEqual(expectedState);
 });

@@ -113,7 +113,7 @@ it('toggle liked state if user already liked the recipe', async () => {
     </MockedProvider>
   );
   component = wrapper.find(LikeRecipe);
-  component.setState(initialState);
+  component.setState({ username: '', liked: true });
 
   const prevState = component.state();
   component.find('button').simulate('click');

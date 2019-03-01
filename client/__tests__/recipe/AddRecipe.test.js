@@ -105,6 +105,16 @@ it('handles inputs change and updates state', () => {
   expect(component.state()).toEqual(expectedState);
 });
 
+it('handles <CKEditor /> value change and updates state', () => {
+  const testData = 'value';
+  component
+    .find('CKEditor')
+    .instance()
+    .props.events.change({ editor: { getData: jest.fn().mockReturnValue(testData) } });
+
+  expect(component.state().instructions).toBe(testData);
+});
+
 it('clears state and redirects to "/" when user submits form', async () => {
   component.setState({
     name: 'name',
