@@ -41,7 +41,7 @@ class Signin extends Component {
 
     return (
       <div className="App">
-        <h2 className="App">Signin</h2>
+        <h2 className="App heading">Signin</h2>
         <Mutation mutation={SIGNIN_USER} variables={{ username, password }}>
           {(signinUser, { loading, error }) => (
             <form className="form" onSubmit={e => this.handleSubmit(e, signinUser)}>

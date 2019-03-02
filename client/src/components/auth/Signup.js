@@ -51,7 +51,7 @@ class Signup extends Component {
 
     return (
       <div className="App">
-        <h2 className="App">Signup</h2>
+        <h2 className="App heading">Signup</h2>
         <Mutation mutation={SIGNUP_USER} variables={{ username, email, password }}>
           {(signupUser, { loading, error }) => (
             <form className="form" onSubmit={e => this.handleSubmit(e, signupUser)}>
