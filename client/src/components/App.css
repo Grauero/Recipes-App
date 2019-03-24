@@ -133,7 +133,7 @@ nav a:link {
   padding: 0.2em;
 }
 
-.Lunch {
+.lunch {
   width: 20%;
   margin: 20px;
   z-index: 1;
@@ -144,7 +144,7 @@ nav a:link {
   background: linear-gradient(to right, #514a9d, #24c6dc);
 }
 
-.Snack {
+.snack {
   width: 20%;
   margin: 20px;
   z-index: 1;
@@ -328,4 +328,20 @@ nav a:link {
 
 .modal-buttons button:first-child {
   margin-left: 0;
+}
+
+@media only screen and (max-width: 350px) {
+  nav {
+    display: flex;
+    flex-direction: column;
+  }
+  nav ul {
+    display: flex;
+  }
+  nav ul li {
+    flex-basis: 50%;
+  }
+  .card {
+    width: 80%;
+  }
 }

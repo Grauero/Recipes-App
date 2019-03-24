@@ -13,7 +13,7 @@ exports[`matches snapshot 1`] = `
     className="App"
   >
     <h2
-      className="App"
+      className="App heading"
     >
       Signin
     </h2>
