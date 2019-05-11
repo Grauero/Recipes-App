@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - node
+branches:
+  only:
+    - master
+before_install:
+  - cd client
+script:
+  - npm run test-CI
+  - npm run coveralls
