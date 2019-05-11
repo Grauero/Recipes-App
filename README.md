@@ -1,4 +1,4 @@
-# Recipes-App
+# Recipes-App [![Build Status](https://travis-ci.org/Grauero/Recipes-App.svg?branch=master)](https://travis-ci.org/Grauero/Recipes-App)
 https://recipes-app1.herokuapp.com/
 
 ![landing](http://i.piccy.info/i9/33e1e6e034b9509108d4b21c63423dd3/1552075985/109831/1306335/recipes_landing.jpg)
