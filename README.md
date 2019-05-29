@@ -1,4 +1,4 @@
-# Recipes-App [![Build Status](https://travis-ci.org/Grauero/Recipes-App.svg?branch=master)](https://travis-ci.org/Grauero/Recipes-App)
+# Recipes-App [![Build Status](https://travis-ci.org/Grauero/Recipes-App.svg?branch=master)](https://travis-ci.org/Grauero/Recipes-App) [![Coverage Status](https://coveralls.io/repos/github/Grauero/Recipes-App/badge.svg?branch=master)](https://coveralls.io/github/Grauero/Recipes-App?branch=master)
 https://recipes-app1.herokuapp.com/
 
 ![landing](http://i.piccy.info/i9/33e1e6e034b9509108d4b21c63423dd3/1552075985/109831/1306335/recipes_landing.jpg)
